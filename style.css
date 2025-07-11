@@ -1,0 +1,425 @@
+:root {
+    --primary-color: #007bff;
+    --primary-dark-color: #0056b3;
+    --secondary-color: #f0f8ff;
+    --background-color: #ffffff;
+    --text-color: #333;
+    --text-light-color: #f8f9fa;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --container-width: 1100px;
+}
+
+/* Reset Básico e Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--background-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link.active { /* Estilo para o link da página atual */
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Seção Hero (Início) */
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: var(--text-light-color);
+    overflow: hidden; 
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 110%;
+    background: linear-gradient(45deg, rgba(0, 123, 255, 0.7), rgba(0, 86, 179, 0.8));
+    z-index: -1;
+    animation: animatedGradient 10s infinite alternate ease-in-out;
+    background-size: 200% 200%;
+}
+
+@keyframes animatedGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.hero-content {
+    animation: slideUp 1s ease-out 0.5s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin: 1rem 0 2rem;
+}
+
+.btn-primary {
+    background: var(--background-color);
+    color: var(--primary-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Seções de Conteúdo */
+.content-section, .content-section-dark {
+    padding: 6rem 0;
+}
+
+.content-section-dark {
+    background-color: var(--primary-color);
+    color: var(--text-light-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+}
+
+.content-section-dark .section-title {
+    color: var(--text-light-color);
+}
+
+/* Grid de Mídia */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.media-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    color: var(--text-light-color);
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.media-card ion-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.media-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Layout dos Botões "Conecte-se" */
+.links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.link-card {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    flex-grow: 1; 
+    flex-basis: 250px; 
+    max-width: 350px; 
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px var(--shadow-color);
+    background-color: var(--primary-color);
+    color: var(--text-light-color);
+}
+
+.link-card ion-icon {
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+    color: currentColor;
+}
+
+/* Footer */
+.footer {
+    background: #333;
+    color: var(--text-light-color);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- ESTILOS PARA A PÁGINA MÍSTICA --- */
+.page-container {
+    padding: 4rem 0;
+}
+
+.page-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+}
+
+.mistica-section {
+    margin-bottom: 3rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.mistica-section h2 {
+    font-size: 2rem;
+    color: var(--primary-dark-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mistica-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.mistica-section p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.mistica-section ul, .mistica-section ol {
+    padding-left: 2rem;
+}
+
+.mistica-section li {
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+}
+
+.mistica-section li p {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #555;
+}
+
+.mistica-section blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #555;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-left: 4px solid var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.mistica-section blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.hymn {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 2;
+    text-align: center;
+}
+/* --- FIM DOS ESTILOS DA MÍSTICA --- */
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1rem; 
+    }
+
+    .logo img {
+        height: 30px; 
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--background-color);
+        width: 100%;
+        height: calc(100vh - 70px);
+        text-align: center;
+        transition: 0.3s;
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
